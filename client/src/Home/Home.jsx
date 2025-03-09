@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import './Home.css';
+
 
 export default function Home() {
   const [products,setProducts]=useState([])
@@ -11,7 +13,7 @@ export default function Home() {
     fetchProducts();
   },[])
   async function fetchProducts(){
-    await axios.get("http://localhost:5000/api/product")
+    await axios.get("https://project-backend-pb29.onrender.com/api/product")
       .then((res)=>{
         console.log(res)
         setProducts(res.data)
@@ -27,7 +29,7 @@ export default function Home() {
       return 
     }
     try{
-      await axios.post("http://localhost:5000/api/cart/add",{productId},{
+      await axios.post("https://project-backend-pb29.onrender.com/api/cart/add",{productId},{
         headers:{Authorization:`Bearer ${user.token}`}
       })
         .then((res)=>{
@@ -45,14 +47,14 @@ export default function Home() {
       <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"10px"}}>
         {
           products.map((productItem)=>(
-            <div key={productItem._id} style={{boxShadow:"0px 1px 4px black",padding:"10px"}}>
+            <div key={productItem._id} style={{boxShadow:"0px 1px 4px purple",padding:"10px"}}>
               <h3>{productItem.name}</h3>
               <p>Price:{productItem.price}</p>
               <p>Description:{productItem.description}</p>
               <p>Stock:{productItem.stock}</p>
               <p>Category:{productItem.category}</p>
               <p>
-                <img width="30%" src={productItem.imageUrl} alt={productItem.name} />
+                <img width="40%" src={productItem.imageUrl} alt={productItem.name} />
               </p>
               {user && user.role==="user"&&(
                 <button onClick={()=>addCart(productItem._id)}>Add to cart</button>

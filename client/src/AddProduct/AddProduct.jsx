@@ -12,7 +12,7 @@ export default function AddProduct() {
     }
     function addProduct(e) {
         e.preventDefault()
-        axios.post("http://localhost:5000/api/product/add", formData, {
+        axios.post("https://project-backend-pb29.onrender.com/api/product/add", formData, {
             headers: { Authorization: `Bearer ${user.token}` }
         })
             .then((res) => {
@@ -31,42 +31,28 @@ export default function AddProduct() {
                     <input
                         type="text"
                         name="name"
-                        placeholder='Enter product name'
+                        placeholder='Enter dish name'
                         onChange={handleChange} required />
                 </div>
                 <div>
                     <input
                         type="text"
                         name="description"
-                        placeholder='Enter product description'
+                        placeholder='Enter dish description'
                         onChange={handleChange} required />
                 </div>
                 <div>
                     <input
                         type="number"
                         name="price"
-                        placeholder='Enter product price'
-                        onChange={handleChange} required />
-                </div>
-                <div>
-                    <input
-                        type="number"
-                        name="stock"
-                        placeholder='Enter products stock'
-                        onChange={handleChange} required />
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        name="category"
-                        placeholder='Enter type of product'
+                        placeholder='Enter price'
                         onChange={handleChange} required />
                 </div>
                 <div>
                     <input
                         type="text"
                         name="imageUrl"
-                        placeholder='Enter product image'
+                        placeholder='Enter image'
                         onChange={handleChange} required />
                 </div>
                 <button onClick={addProduct}>Add</button>

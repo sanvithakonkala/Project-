@@ -2,6 +2,7 @@ import React, { useState,useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+
 export default function Register() {
     const [formData,setFormData]=useState(
         {username:"",email:"",password:"",mobile:""}
@@ -14,7 +15,7 @@ export default function Register() {
     function handleSubmit(e){
         e.preventDefault()
         console.log(formData)
-        axios.post("http://localhost:5000/api/auth/signup",formData)
+        axios.post("https://project-backend-pb29.onrender.com/api/auth/signup",formData)
             .then((res)=>{
                 console.log("response from register",res)
                 localStorage.setItem("token",res.data.token)

@@ -10,6 +10,10 @@ import Cart from './Cart/Cart'
 import Checkout from './Checkout/Checkout'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
+import './App.css';
+
+
+
 const stripePromise=loadStripe("pk_test_51MOH8zSB0s2EMORR1S7r29neT4EL162r7P5EmVbS71UAcHp55KqfBGfT0b5JbJdHKUuLlhlcNtfvO7mLOLb9lmQW00OSfFmdcL")
 export default function App() {
   return (
@@ -32,5 +36,6 @@ export default function App() {
         </AuthProvider>
       </BrowserRouter>
     </div>
+    
   )
 }
